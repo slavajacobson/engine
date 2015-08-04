@@ -3,7 +3,7 @@ module Locomotive
     module Drops
       class Uploader < Base
 
-        delegate :size, to: :@_source
+        delegate :size, :width, :height, to: :@_source
 
         def url
           url, timestamp = @_source.url, @_source.model.updated_at.to_i
