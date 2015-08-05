@@ -19,6 +19,7 @@ module Locomotive
         module ClassMethods
 
           def content_types
+
             {
               image:      ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/x-png', 'image/jpg', 'image/x-icon'],
               media:      [/^video/, 'application/x-shockwave-flash', 'application/x-flash-video', 'application/x-swf', /^audio/, 'application/ogg', 'application/x-mp3'],
@@ -32,6 +33,7 @@ module Locomotive
         end
 
         def set_content_type_of_model(*args)
+          
           value         = :other
           content_type  = file.content_type
 
@@ -52,10 +54,12 @@ module Locomotive
         end
 
         def set_size(*args)
+          
           model.size = file.size
         end
 
         def set_width_and_height
+          
           if model.image?
             dragonfly_img = Dragonfly.app.fetch_file(current_path)
             model.width, model.height = dragonfly_img.width, dragonfly_img.height
