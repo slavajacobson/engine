@@ -56,6 +56,7 @@ module Locomotive
         end
 
         def set_width_and_height
+          byebug
           if model.image?
             dragonfly_img = Dragonfly.app.fetch_file(current_path)
             model.width, model.height = dragonfly_img.width, dragonfly_img.height

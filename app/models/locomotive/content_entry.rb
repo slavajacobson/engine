@@ -15,6 +15,9 @@ module Locomotive
     field :_position,         type: Integer, default: 0
     field :_visible,          type: Boolean, default: true
 
+    field :width
+    field :height
+    
     ## validations ##
     validates_presence_of     :_slug
     validates_uniqueness_of   :_slug, scope: :content_type_id, allow_blank: true
