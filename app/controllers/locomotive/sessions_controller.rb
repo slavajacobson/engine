@@ -14,7 +14,13 @@ module Locomotive
     protected
 
     def after_sign_in_path_for(resource)
-      pages_path
+
+
+      if current_locomotive_account.admin?
+        pages_path
+      elsif current_locomotive_account.viewer?
+        request.protocol + request.host_with_port
+      end
     end
 
     def after_sign_out_path_for(resource)

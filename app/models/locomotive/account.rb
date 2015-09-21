@@ -57,7 +57,9 @@ module Locomotive
     def admin?
       Site.where(memberships: { '$elemMatch' => { account_id: self._id, role: :admin } }).count > 0
     end
-
+    def viewer?
+      Site.where(memberships: { '$elemMatch' => { account_id: self._id, role: :viewer } }).count > 0
+    end
     # Regenerate the API key without saving the account.
     #
     # @return [ String ] The new api key

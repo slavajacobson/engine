@@ -24,6 +24,10 @@ module Locomotive
           self.redirect_to_locomotive_page and return
         end
 
+
+
+        render_access_denied_error and return if @page.authentication_required? && !signed_in?
+
         render_no_page_error and return if @page.nil?
 
         output = @page.render(self.locomotive_context(assigns))
@@ -100,6 +104,15 @@ module Locomotive
       @page.not_found? ? :not_found : :ok
     end
 
+
+
+    def render_access_denied_error
+      #render :template => "/locomotive/custom_auth/new", :layout => false
+
+
+
+      redirect_to new_locomotive_account_session_path
+    end
     # Get the Locomotive page matching the request and scoped by the current Locomotive site
     #
     # @param [ String ] path An optional path overriding the default behaviour to get a page

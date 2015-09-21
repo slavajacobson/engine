@@ -10,9 +10,14 @@
     = yield :head
 
   %body{ class: controller.controller_name }
+    #background
+      = image_tag Locomotive::ContentType.where( "slug" => "gallery").first.entries.first.background.url
+
     #wrapper
+
+
       #light
         #panel.container
-          %h1!= title
+          %h1!= current_site.name
 
           = yield

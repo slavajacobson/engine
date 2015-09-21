@@ -3,7 +3,7 @@ module Locomotive
 
     include Locomotive::Mongoid::Document
 
-    MINIMAL_ATTRIBUTES = %w(_id title slug fullpath position depth published templatized target_klass_name redirect listed response_type parent_id parent_ids site_id created_at updated_at)
+    MINIMAL_ATTRIBUTES = %w(_id title slug fullpath position depth published templatized target_klass_name redirect authentication_required listed response_type parent_id parent_ids site_id created_at updated_at)
 
     ## Extensions ##
     include Extensions::Page::Tree
@@ -27,6 +27,8 @@ module Locomotive
     field :published,           type: Boolean, default: false
     field :cache_strategy,      default: 'none'
     field :response_type,       default: 'text/html'
+    field :authentication_required, :type => Boolean, :default => false
+
 
     ## associations ##
     belongs_to :site, class_name: 'Locomotive::Site', validate: false, autosave: false

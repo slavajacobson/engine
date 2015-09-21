@@ -31,6 +31,7 @@
     - unless page.translated?
       %span.untranslated= t('locomotive.shared.list.untranslated')
 
+
     .more
       %span!= t('.updated_at')
       = l page.updated_at, format: :short
