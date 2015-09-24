@@ -26,7 +26,7 @@ module Locomotive
 
 
 
-        render_access_denied_error and return if @page.authentication_required? && !signed_in?
+        render_access_denied_error and return if @page.authentication_required && !signed_in?
 
         render_no_page_error and return if @page.nil?
 
