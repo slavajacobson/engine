@@ -15,12 +15,12 @@ module Locomotive
           File.basename(@_source.url)
         end
         def width
-          Dragonfly.app.fetch_file(@_source.path).width
+          @_source.model.width
 
 
         end
         def height
-          Dragonfly.app.fetch_file(@_source.path).height
+          @_source.model.height
         end
       end
     end
