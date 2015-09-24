@@ -10,14 +10,18 @@
     = yield :head
 
   %body{ class: controller.controller_name }
-    #background
-      = image_tag Locomotive::ContentType.where( "slug" => "gallery").first.entries.first.background.url
+    - bg = Locomotive::ContentType.first.first
+    - if bg.present?
+      #background
+        = image_tag bg.entries.first.background.url
 
     #wrapper
 
 
       #light
         #panel.container
-          %h1!= current_site.name
+           
+          - name = current_site.name if defined?(current_site)
+          %h1!= name || "Login"
 
           = yield
