@@ -15,11 +15,15 @@ module Locomotive
           File.basename(@_source.url)
         end
         def width
-          @_source.model.width || set_width
+          if number.has_attribute?(:width)
+            @_source.model.width || set_width
+          end
         end
 
         def height
-          @_source.model.height || set_height
+          if number.has_attribute?(:height)
+            @_source.model.height || set_height
+          end
         end
 
         def set_width
@@ -31,6 +35,7 @@ module Locomotive
         end
 
         def set_height
+
           dragonfly_img = Dragonfly.app.fetch_file(@_source.file.file)
           @_source.model.height = dragonfly_img.height
           @_source.model.save
