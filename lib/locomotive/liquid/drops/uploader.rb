@@ -15,12 +15,27 @@ module Locomotive
           File.basename(@_source.url)
         end
         def width
-          @_source.model.width
-
-
+          @_source.model.width || set_width
         end
+
         def height
-          @_source.model.height
+          @_source.model.height || set_height
+        end
+
+        def set_width
+          dragonfly_img = Dragonfly.app.fetch_file(@_source.file.file)
+          @_source.model.width = dragonfly_img.width
+          @_source.model.save
+
+          dragonfly_img.width
+        end
+
+        def set_height
+          dragonfly_img = Dragonfly.app.fetch_file(@_source.file.file)
+          @_source.model.height = dragonfly_img.height
+          @_source.model.save
+
+          dragonfly_img.height
         end
       end
     end
