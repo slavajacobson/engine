@@ -15,13 +15,14 @@ module Locomotive
           File.basename(@_source.url)
         end
         def width
-          if @_source.model.has_attribute?(:width)
+          
+          if defined?(@_source.model.width)
             @_source.model.width || set_width
           end
         end
 
         def height
-          if @_source.model.has_attribute?(:height)
+          if defined?(@_source.model.height)
             @_source.model.height || set_height
           end
         end
