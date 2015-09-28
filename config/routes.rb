@@ -14,6 +14,7 @@ Locomotive::Engine.routes.draw do
 
   devise_scope :locomotive_account do
     match '/'         => 'sessions#new'
+    get '/request_account' => 'sessions#request_account', as: :request_account
     delete 'signout'  => 'sessions#destroy', as: :destroy_locomotive_session
   end
 

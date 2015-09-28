@@ -1,0 +1,14 @@
+%p= t('.title', name: @account.name, domain: @domain, date: I18n.l(Time.now.in_time_zone), locale: @account.locale).html_safe
+
+%p
+  %b= t('.type', type: @type.name, locale: @account.locale)
+  %br
+  %i= @type.description
+
+%hr
+
+%ul
+  %li
+    %strong= field.label
+    &nbsp;-&nbsp;
+    

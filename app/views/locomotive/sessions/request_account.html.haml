@@ -1,0 +1,25 @@
+- content_for :head_title do
+  Register to view the site
+
+- title "Request an Account"
+
+
+= semantic_form_for(resource, as: resource_name, url: locomotive_account_session_path) do |f|
+  .inner
+    %br
+    %p.explanations
+      Fill out your information and we'll get in touch with you with account information.
+
+    = f.inputs do
+      = f.input :first_name, label: "First Name", required: true
+      = f.input :last_name, label: "Last Name", required: true
+      = f.input :email, label: "Email", required: true
+      = f.input :phone, label: "Phone", required: true
+      = f.input :brokerage, label: "Brokerage", required: false
+      %li#locomotive_account_brokerage_input.string.input.optional.stringish
+        %label.label{:for => "locomotive_account_brokerage"} Additional Notes
+        = f.text_area :additional_notes, label: "Additional Notes", style:'width: 100%', required: false
+
+     
+.footer
+  = submit_tag "Submit"

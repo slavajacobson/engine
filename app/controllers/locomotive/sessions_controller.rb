@@ -12,6 +12,11 @@ module Locomotive
     helper 'locomotive/base'
 
 
+
+    def request_account
+      
+    end
+
     # def new
     #   super
     #   byebug
