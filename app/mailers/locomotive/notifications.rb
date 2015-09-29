@@ -16,6 +16,25 @@ module Locomotive
 
       mail subject: subject, to: account.email
     end
+
+
+
+    def account_request(account, message, site)
+
+      @account = account
+      @message = message
+
+      if Locomotive.config.multi_sites_or_manage_domains?
+        @domain = site.domains.first
+      else
+        @domain = ActionMailer::Base.default_url_options[:host] || 'localhost'
+      end
+
+
+      subject = "Account Request for: #{@domain}"
+      mail subject: subject, to: account.email
+
+    end
   end
 
 end

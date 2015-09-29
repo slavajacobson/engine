@@ -12,7 +12,7 @@
   %body{ class: controller.controller_name }
     - bg = Locomotive::ContentType.where(site_id: current_site.id).last
     - if bg.present? && bg.entries.where(featured: true).present?
-      #background{style: "background-image: url(#{bg.entries.where(featured: true).last.image.url}); background-size: cover;"}
+      #background{style: "background-image: url(#{bg.entries.where(featured: true).last.image.url}); background-size: cover; position: fixed;"}
 
 
     #wrapper

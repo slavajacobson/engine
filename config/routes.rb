@@ -54,6 +54,9 @@ Locomotive::Engine.routes.draw do
     get :export,  on: :collection
   end
 
+
+  match '/system/account_request/submit' => 'public/messages#create', :as => 'messages', :via => :post
+
   # installation guide
   match '/installation'       => 'installation#show', defaults: { step: 1 }, as: :installation
   match '/installation/:step' => 'installation#show', as: :installation_step
@@ -111,6 +114,9 @@ Rails.application.routes.draw do
 
   # public content entry submissions
   resources :locomotive_entry_submissions, controller: 'locomotive/public/content_entries', path: 'entry_submissions/:slug'
+
+  
+
 
   # magic urls
   match '/_admin'               => 'locomotive/public/pages#show_toolbar'

@@ -4,9 +4,11 @@
 - title "Request an Account"
 
 
-= semantic_form_for(resource, as: resource_name, url: locomotive_account_session_path) do |f|
+= semantic_form_for(Locomotive::Message.new) do |f|
   .inner
     %br
+    %p.errors{style: 'color:red;'}
+      = flash[:alert]
     %p.explanations
       Fill out your information and we'll get in touch with you with account information.
 
@@ -19,7 +21,9 @@
       %li#locomotive_account_brokerage_input.string.input.optional.stringish
         %label.label{:for => "locomotive_account_brokerage"} Additional Notes
         = f.text_area :additional_notes, label: "Additional Notes", style:'width: 100%', required: false
+      %li#locomotive_account_brokerage_input.string.input.optional.stringish
+        = submit_tag "Submit"
 
-     
+      
 .footer
-  = submit_tag "Submit"
+

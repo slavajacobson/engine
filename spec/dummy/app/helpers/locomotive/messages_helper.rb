@@ -1,0 +1,2 @@
+module Locomotive::MessagesHelper
+end

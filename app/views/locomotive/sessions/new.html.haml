@@ -12,8 +12,10 @@
       = f.input :password, label: t('.password'), required: false
 
     %p.link
+      = link_to "Request Access", request_account_path
+      |
       = link_to t('.link'), new_locomotive_account_password_path
 
-
+      
   .footer
     = submit_tag t('locomotive.buttons.login')

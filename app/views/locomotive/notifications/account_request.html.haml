@@ -1,0 +1,23 @@
+%p= "Account request for #{@domain}"
+
+%hr
+
+%ul
+  %li
+    %strong First Name
+    = @message.first_name
+  %li
+    %strong Last Name
+    = @message.last_name
+  %li
+    %strong Phone #
+    = @message.phone
+  %li
+    %strong Email
+    = @message.email
+  %li
+    %strong Brokerage
+    = @message.brokerage
+  %li
+    %strong Additional Notes
+    = @message.additional_notes
