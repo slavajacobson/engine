@@ -16,6 +16,9 @@ module Locomotive
         if @message.valid?
 
           current_site.accounts.each do |account|
+            
+
+            next if current_site.memberships.where(account_id: account.id).first.role == "viewer"
 
             Locomotive::Notifications.account_request(account, @message, current_site).deliver
           end
