@@ -26,11 +26,10 @@ module Locomotive
 
     def after_sign_in_path_for(resource)
 
-
-      if current_locomotive_account.admin?
-        pages_path
-      elsif current_locomotive_account.viewer?
+      if current_locomotive_account.viewer?
         request.protocol + request.host_with_port
+      else
+        pages_path
       end
     end
 
