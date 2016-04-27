@@ -19,7 +19,7 @@
 
 
       #light
-        #panel.container
+        #panel.container{style: 'position: absolute;bottom: 0;top: initial;left: 50%;margin-left: -175px;margin-bottom: 50px;' }
            
           - name = current_site.name if defined?(current_site)
           %h1!= name || "Login"
