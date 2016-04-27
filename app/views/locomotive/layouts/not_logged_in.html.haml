@@ -10,18 +10,28 @@
     = yield :head
 
   %body{ class: controller.controller_name }
-    - bg = Locomotive::ContentType.where(site_id: current_site.id).last
-    - if bg.present? && bg.entries.where(featured: true).present?
-      #background{style: "background-image: url(#{bg.entries.where(featured: true).last.image.url}); background-size: cover; position: fixed;"}
+    - if defined?(current_site)
+      - bg = Locomotive::ContentType.where(site_id: current_site.id).last
+      - if bg.present? && bg.entries.where(featured: true).present?
+        #background{style: "background-image: url(#{bg.entries.where(featured: true).last.image.url}); background-size: cover; position: fixed;"}
 
 
     #wrapper
 
 
       #light
-        #panel.container{style: 'position: absolute;bottom: 0;top: initial;left: 50%;margin-left: -175px;margin-bottom: 50px;' }
-           
-          - name = current_site.name if defined?(current_site)
-          %h1!= name || "Login"
+        - if action_name == 'new'
+          #panel.container{style: 'position: absolute;bottom: 0;top: initial;left: 50%;margin-left: -175px;margin-bottom: 50px;' }
+            
+            - name = current_site.name if defined?(current_site)
+            %h1!= name || "Login"
 
-          = yield
+            = yield
+
+        - else
+          #panel.container
+
+            - name = current_site.name if defined?(current_site)
+            %h1!= name || "Login"
+
+            = yield
